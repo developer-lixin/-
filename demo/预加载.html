@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#wrap {
+				width: 700px;
+				border: 1px solid #000;
+			}
+			#wrap img {
+				width: 300px;
+				opacity: 0;
+				transition: .5s;
+			}
+		</style>
+	</head>
+	<body style="height:3000px;">
+		<input type="button" value="加载"/>
+		<div id="wrap">
+			<!--<img src="img/1.jpg"/>-->
+		</div>
+		<script>
+			var wrap = document.getElementById('wrap');
+			var btn = document.getElementsByTagName('input')[0];
+			btn.addEventListener('click',createImg);
+			function createImg() {
+				for(var i = 0; i < 12; i++) {
+					var img = document.createElement("img");
+					if(i < 4) {
+						img.src = "img/"+ (i + 1) +".jpg";
+						(function(a){
+							setTimeout(function(){
+								imgs[a].style.opacity = 1;
+							},505);
+						})(i);
+					} else {
+						img.setAttribute("_src","img/"+ (i + 1) +".jpg")
+					}
+					wrap.appendChild(img);
+				}
+			}
+			document.addEventListener('scroll',load); 
+			var imgs = document.getElementsByTagName('img');
+			function load() {
+				for(var i = 0; i < imgs.length; i++) {
+					(function(a){
+						if(imgs[a].getBoundingClientRect().top <= window.innerHeight) {
+							if(imgs[a].getAttribute("_src")) {
+								imgs[a].src = imgs[a].getAttribute("_src");
+								imgs[a].removeAttribute('_src');
+								setTimeout(function(){
+									imgs[a].style.opacity = 1;
+								},505);
+							}
+						}
+					})(i);
+				}
+				
+			};
+			
+		</script>
+	</body>
+</html>

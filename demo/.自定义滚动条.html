@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1 {
+				width: 25px;
+				height: 300px;
+				background: greenyellow;
+				position: relative;
+			}
+			#div2 {
+				width: 25px;
+				height: 25px;
+				background: #CCCCCC;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#div3 {
+				width: 300px;
+				height: 300px;
+				background: #00FFFF;
+				position: absolute;
+				left: 40px;
+				top: 8px;
+				overflow: hidden;
+			}
+			#div4 {
+				width: 300px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				var div = document.querySelector("#div1");
+				var div2 = document.querySelector("#div2");
+				var div3 = document.querySelector("#div3");
+				var div4 = document.querySelector("#div4");
+				div2.onmousedown = function(ev) {
+					var disY = ev.pageY - div2.offsetTop;
+					document.onmousemove = function(ev) {
+						var t = ev.pageY - disY ;
+						if(t < 0) {
+							t = 0;
+						} else if(t > div1.offsetHeight - div2.offsetHeight) {
+							t = div1.offsetHeight - div2.offsetHeight;
+						}
+						div2.style.top = t + 'px';
+						// 获取滚动条的比例
+						var scaleY = div2.offsetTop/(div1.offsetHeight - div2.offsetHeight); 
+						div4.style.top = scaleY * (div3.offsetHeight - div4.scrollHeight) + "px"; // div3.offsetHeight - div4.scrollHeight   求出隐藏部分的高度，在乘以比例，就是滚动条摇滚动的距离
+					};
+					document.onmouseup = function() {
+						document.onmousemove = document.onmouseup = null;
+					};
+					return false;
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+		<div id="div3">
+			<div id="div4">
+				及分解佛儿童和金佛IE将诶偶然间饿哦if二分if额纷纷就饿哦得唔得无多分开皮卡；辅导费购卡POI看破而可怕如果发飞机覅哦济公和人洁柔和解耦日光盘墨迹哦；磕碰of可欧普工日加工人陪我封口费皮尔卡WAP静摩擦减肥哦vfnfheiohfoie农机噢if耳机哦化工和绕绕我军绚丽的风景耳机哦和该金融局偶奥 基金偶偶奇偶和后和后一vhorhothgorgoa 你Hi好vihoghrogpth 合肥高铁人体如果发飞飞惹我热热我飞凤飞飞无非是无法飞飞飞答非所问的额飞凤飞飞及分解佛儿童和金佛IE将诶偶然间饿哦if二分if额纷纷就饿哦得唔得无多分开皮卡；辅导费购卡POI看破而可怕如果发飞机覅哦济公和人洁柔和解耦日光盘墨迹哦；磕碰of可欧普工日加工人陪我封口费皮尔卡WAP静摩擦减肥哦vfnfheiohfoie农机噢if耳机哦化工和绕绕我军绚丽的风景耳机哦和该金融局偶奥 基金偶偶奇偶和后和后一vhorhothgorgoa 你Hi好vihoghrogpth 合肥高铁人体如果发飞飞惹我热热我飞凤飞飞无非是无法飞飞飞答非所问的额飞凤飞飞及分解佛儿童和金佛IE将诶偶然间饿哦if二分if额纷纷就饿哦得唔得无多分开皮卡；辅导费购卡POI看破而可怕如果发飞机覅哦济公和人洁柔和解耦日光盘墨迹哦；磕碰of可欧普工日加工人陪我封口费皮尔卡WAP静摩擦减肥哦vfnfheiohfoie农机噢if耳机哦化工和绕绕我军绚丽的风景耳机哦和该金融局偶奥 基金偶偶奇偶和后和后一vhorhothgorgoa 你Hi好vihoghrogpth 合肥高铁人体如果发飞飞惹我热热我飞凤飞飞无非是无法飞飞飞答非所问的额飞凤飞飞
+			</div>
+		</div>
+	</body>
+</html>
